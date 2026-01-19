@@ -11,11 +11,27 @@ import {
   ShoppingBag,
   Copy,
   X,
-  Check
+  Check,
+  Laptop,
+  Smartphone,
+  Volume2,
+  Package,
+  Skull,
+  ScrollText,
+  Wheat,
+  CookingPot,
+  Mountain,
+  Swords,
+  Key,
+  MapPin
 } from 'lucide-react';
+import { FeatureModal } from './components/FeatureModal';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGetStartedOpen, setIsGetStartedOpen] = useState(false);
+  const [isWikiOpen, setIsWikiOpen] = useState(false);
+  const [isGuidanceOpen, setIsGuidanceOpen] = useState(false);
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
   // Handle copy to clipboard
@@ -125,8 +141,8 @@ function App() {
 
             {/* Button Row - Get Started & Wiki */}
             <div className="grid grid-cols-2 gap-3">
-              <motion.a
-                href="#guide"
+              <motion.button
+                onClick={() => setIsGetStartedOpen(true)}
                 className="group relative flex items-center justify-center gap-2 px-4 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium text-base transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -135,10 +151,10 @@ function App() {
                 <BookOpen className="w-5 h-5" />
                 <span className="hidden sm:inline">Get Started</span>
                 <span className="sm:hidden">Start</span>
-              </motion.a>
+              </motion.button>
 
-              <motion.a
-                href="#wiki"
+              <motion.button
+                onClick={() => setIsWikiOpen(true)}
                 className="group relative flex items-center justify-center gap-2 px-4 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium text-base transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -147,12 +163,12 @@ function App() {
                 <Globe className="w-5 h-5" />
                 <span className="hidden sm:inline">Wiki & Forums</span>
                 <span className="sm:hidden">Wiki</span>
-              </motion.a>
+              </motion.button>
             </div>
 
             {/* Server Guidance Button */}
-            <motion.a
-              href="#guidance"
+            <motion.button
+              onClick={() => setIsGuidanceOpen(true)}
               className="group relative flex items-center justify-center gap-3 w-full px-6 py-4 rounded-2xl bg-gray-900/80 backdrop-blur-md border border-gray-700/50 text-white font-medium text-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800/90 hover:border-gray-600/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -160,7 +176,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               <Compass className="w-6 h-6" />
               <span>Server Guidance</span>
-            </motion.a>
+            </motion.button>
           </motion.div>
 
           {/* Social Icons & Footer */}
@@ -209,6 +225,263 @@ function App() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Get Started Modal */}
+      <AnimatePresence>
+        <FeatureModal 
+          isOpen={isGetStartedOpen} 
+          onClose={() => setIsGetStartedOpen(false)}
+          title="Begin Your Adventure"
+        >
+          <div className="space-y-8">
+            {/* Crossplay System */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 text-minecraft">
+                  <Laptop className="w-5 h-5" />
+                  <Smartphone className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-bold text-white">Play Anywhere</h3>
+              </div>
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5">
+                <p className="text-gray-300 leading-relaxed">
+                  Join from <span className="text-minecraft font-semibold">Java</span> or <span className="text-blue-400 font-semibold">Bedrock</span>! 
+                  Majority of players are on Bedrock, don't miss out. Unlimited adventures on all devices.
+                </p>
+              </div>
+            </div>
+
+            {/* Ambient & Atmosphere */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Volume2 className="w-5 h-5 text-purple-400" />
+                <h3 className="text-xl font-bold text-white">Immersive Sound</h3>
+              </div>
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5">
+                <p className="text-gray-300 leading-relaxed">
+                  Experience realistic sound atmosphere based on your surroundings, biome, time of the day, and even weather. 
+                  Every moment feels alive and engaging.
+                </p>
+              </div>
+            </div>
+
+            {/* Adventure Mechanics */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Package className="w-5 h-5 text-gold" />
+                <h3 className="text-xl font-bold text-white">On The Trail</h3>
+              </div>
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5">
+                <p className="text-gray-300 leading-relaxed">
+                  While traveling, watch out for <span className="text-gold font-semibold">Loot Balloons</span> flying overhead! 
+                  Shoot them down to drop valuable loot and rare treasures.
+                </p>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="bg-gradient-to-r from-minecraft/20 to-emerald-600/20 border border-minecraft/30 rounded-xl p-6 text-center">
+              <p className="text-lg text-white font-semibold mb-2">Ready to Begin?</p>
+              <p className="text-sm text-gray-300">
+                Click the <span className="text-minecraft font-semibold">Play Now</span> button to get the server connection details!
+              </p>
+            </div>
+          </div>
+        </FeatureModal>
+      </AnimatePresence>
+
+      {/* Wiki & Forums Modal */}
+      <AnimatePresence>
+        <FeatureModal 
+          isOpen={isWikiOpen} 
+          onClose={() => setIsWikiOpen(false)}
+          title="Server Wiki & Features"
+        >
+          <div className="space-y-6">
+            <p className="text-gray-400 text-sm">
+              Discover the unique features and mechanics that make Doeng World a premium RPG experience.
+            </p>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* New Items */}
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 space-y-3 hover:border-minecraft/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Swords className="w-5 h-5 text-minecraft" />
+                  <h3 className="text-lg font-bold text-white">New Items</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Lots of custom weapons, tools, and accessories. Vanilla-friendly items forged or looted from bosses.
+                </p>
+              </div>
+
+              {/* New Mobs & Bosses */}
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 space-y-3 hover:border-red-500/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Skull className="w-5 h-5 text-red-500" />
+                  <h3 className="text-lg font-bold text-white">New Mobs & Bosses</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Encounter diverse enemies like Crocodiles, Bears, Goblins, and powerful Bosses.
+                </p>
+              </div>
+
+              {/* Artifacts & Schematics */}
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 space-y-3 hover:border-purple-500/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <ScrollText className="w-5 h-5 text-purple-400" />
+                  <h3 className="text-lg font-bold text-white">Artifacts & Schematics</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Find ancient artifacts and Workshop Schematics in chests. Identify them to unlock hidden powers.
+                </p>
+              </div>
+
+              {/* Richer Farming */}
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 space-y-3 hover:border-green-500/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Wheat className="w-5 h-5 text-green-400" />
+                  <h3 className="text-lg font-bold text-white">Richer Farming</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Discover new seeds, grow fresh crops (Tomatoes, Corn, etc.), and transform harvest into tasty dishes.
+                </p>
+              </div>
+
+              {/* Cooking */}
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 space-y-3 hover:border-orange-500/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <CookingPot className="w-5 h-5 text-orange-400" />
+                  <h3 className="text-lg font-bold text-white">Cooking</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  New Animated Cooking Pot block! Combine foods to create filling meals with lasting potion effects (11+ new recipes).
+                </p>
+              </div>
+
+              {/* World Generation */}
+              <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-5 space-y-3 hover:border-blue-500/50 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Mountain className="w-5 h-5 text-blue-400" />
+                  <h3 className="text-lg font-bold text-white">World Generation</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Explore 80+ new biomes, 50+ new structures, and 14+ cave biomes.
+                </p>
+              </div>
+            </div>
+
+            {/* Info Note */}
+            <div className="bg-gold/10 border border-gold/30 rounded-xl p-5 text-center">
+              <p className="text-sm text-gray-300">
+                🌟 More features are being added regularly. Stay tuned for updates!
+              </p>
+            </div>
+          </div>
+        </FeatureModal>
+      </AnimatePresence>
+
+      {/* Server Guidance Modal */}
+      <AnimatePresence>
+        <FeatureModal 
+          isOpen={isGuidanceOpen} 
+          onClose={() => setIsGuidanceOpen(false)}
+          title="Dungeons & Progression"
+        >
+          <div className="space-y-8">
+            {/* Dungeon Types Overview */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-white border-b border-gray-700/50 pb-3">
+                Dungeon Types
+              </h3>
+
+              {/* Locked Dungeons */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Key className="w-6 h-6 text-gold" />
+                  <h4 className="text-xl font-bold text-white">Locked Dungeons</h4>
+                </div>
+                <div className="bg-black/30 backdrop-blur-sm border border-gold/30 rounded-xl p-5">
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Requires <span className="text-gold font-semibold">Keys</span> found from Mini-Bosses. 
+                    Shared arenas with other players. Clear progression: defeat previous boss to unlock next.
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-400 font-semibold uppercase tracking-wide">Available Dungeons:</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2">
+                        <p className="text-minecraft text-sm">⚔️ Abandoned Mining Site</p>
+                      </div>
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2">
+                        <p className="text-red-400 text-sm">🧛 Dracula's Manor</p>
+                      </div>
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2 sm:col-span-2">
+                        <p className="text-blue-400 text-sm">🏛️ Ancient Ruins</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Wilderness Dungeons */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-6 h-6 text-purple-400" />
+                  <h4 className="text-xl font-bold text-white">Wilderness Dungeons</h4>
+                </div>
+                <div className="bg-black/30 backdrop-blur-sm border border-purple-500/30 rounded-xl p-5">
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Unlockable via <span className="text-purple-400 font-semibold">Portals</span> found underground. 
+                    Instanced (Private) & Procedurally Generated — different layout every run!
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-400 font-semibold uppercase tracking-wide">Available Dungeons:</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2">
+                        <p className="text-gray-300 text-sm">🕳️ The Crawling Depths</p>
+                      </div>
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2">
+                        <p className="text-green-400 text-sm">🍄 Fungal Cavern</p>
+                      </div>
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2">
+                        <p className="text-blue-400 text-sm">🌊 Flooded Catacombs</p>
+                      </div>
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2">
+                        <p className="text-purple-400 text-sm">☠️ Venom Pools</p>
+                      </div>
+                      <div className="bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-2 sm:col-span-2">
+                        <p className="text-pink-400 text-sm">👑 Queen's Lair</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pro Tips */}
+            <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-xl p-6 space-y-3">
+              <div className="flex items-center gap-2">
+                <Skull className="w-5 h-5 text-red-400" />
+                <p className="text-lg font-bold text-white">Pro Tips</p>
+              </div>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-gold">▸</span>
+                  <span>Prepare well before entering dungeons — bring potions and food!</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold">▸</span>
+                  <span>Locked Dungeons require teamwork. Bring friends for better chances!</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-gold">▸</span>
+                  <span>Wilderness Dungeons reset every run — perfect for farming rare loot.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FeatureModal>
+      </AnimatePresence>
 
       {/* Play Now Modal */}
       <AnimatePresence>
