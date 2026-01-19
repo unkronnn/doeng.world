@@ -5,7 +5,7 @@
 
 The official landing page for **Doeng World**, a Minecraft RPG Adventure server featuring crossplay (Java & Bedrock), custom dungeons, and unique MMO mechanics.
 
-![Doeng World Screenshot]([https://via.placeholder.com/800x400?text=Doeng+World+Preview](https://github.com/unkronnn/doeng.world/blob/main/landingpage.png))
+![Doeng World Screenshot](./landingpage.png)
 
 ## 🚀 Tech Stack
 
@@ -24,7 +24,7 @@ Follow these steps to run the project on your local machine:
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/unkronnn/doeng.world.git](https://github.com/unkronnn/doeng.world.git)
+    git clone https://github.com/unkronnn/doeng.world.git
     cd doeng.world
     ```
 
