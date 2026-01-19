@@ -488,10 +488,10 @@ function App() {
                   <label className="text-xs text-gray-400 uppercase tracking-wide">Server IP</label>
                   <div className="flex items-center gap-2">
                     <div className="flex-1 border border-white/10 rounded-lg px-4 py-3 bg-white/5">
-                      <code className="text-minecraft font-mono text-sm sm:text-base">play.doeng.world</code>
+                      <code className="text-minecraft font-mono text-sm sm:text-base">doeng.world</code>
                     </div>
                     <motion.button
-                      onClick={() => handleCopy('play.doeng.world', 'java')}
+                      onClick={() => handleCopy('doeng.world', 'java')}
                       className="flex items-center gap-2 px-4 py-3 border border-white/10 rounded-lg hover:bg-white/5 text-white transition-all duration-200"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -533,10 +533,10 @@ function App() {
                   <label className="text-xs text-gray-400 uppercase tracking-wide">Server IP</label>
                   <div className="flex items-center gap-2">
                     <div className="flex-1 border border-white/10 rounded-lg px-4 py-3 bg-white/5">
-                      <code className="text-blue-400 font-mono text-sm sm:text-base">be.doeng.world</code>
+                      <code className="text-blue-400 font-mono text-sm sm:text-base">doeng.world</code>
                     </div>
                     <motion.button
-                      onClick={() => handleCopy('be.doeng.world', 'bedrock-ip')}
+                      onClick={() => handleCopy('doeng.world', 'bedrock-ip')}
                       className="flex items-center gap-2 px-4 py-3 border border-white/10 rounded-lg hover:bg-white/5 text-white transition-all duration-200"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
