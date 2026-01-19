@@ -10,7 +10,6 @@ import {
   Instagram,
   ShoppingBag,
   Copy,
-  X,
   Check,
   Laptop,
   Smartphone,
@@ -55,7 +54,7 @@ function App() {
         delayChildren: 0.2
       }
     }
-  };
+  } as const;
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -67,7 +66,7 @@ function App() {
         ease: "easeOut"
       }
     }
-  };
+  } as const;
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
