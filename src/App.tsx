@@ -81,7 +81,7 @@ function App() {
         }}
       >
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       {/* Main Content Container */}
