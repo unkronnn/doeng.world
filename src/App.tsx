@@ -74,7 +74,7 @@ function App() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1614732414444-096e5f1122d5?q=80&w=2574&auto=format&fit=crop')`,
+          backgroundImage: `url('/bg-doeng-world.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -261,7 +261,7 @@ function App() {
               </div>
 
               <p className="text-gray-400 text-sm border-l-2 border-gold pl-4">
-                Majority of players are on Bedrock. Unlimited adventures on all devices.
+                Majority of players are on Bedrock. Doeng World on all devices.
               </p>
             </div>
 
