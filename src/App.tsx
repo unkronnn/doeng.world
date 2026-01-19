@@ -116,7 +116,7 @@ function App() {
           >
             {/* Discord Button */}
             <motion.a
-              href="https://discord.gg/yourserver"
+              href="https://discord.gg/BqprhMXZNu"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center justify-center gap-3 w-full px-6 py-4 rounded-2xl bg-discord/90 backdrop-blur-md border border-discord/50 text-white font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(88,101,242,0.6)] hover:bg-discord overflow-hidden"
