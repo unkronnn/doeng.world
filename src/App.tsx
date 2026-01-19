@@ -466,184 +466,134 @@ function App() {
 
       {/* Play Now Modal */}
       <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {/* Backdrop */}
-            <motion.div
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
-              onClick={() => setIsModalOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
+        <FeatureModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="Server Connection"
+        >
+          <div className="space-y-8">
+            {/* Java Edition Section */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-minecraft rounded-full animate-pulse"></div>
+                <h3 className="text-lg font-semibold text-white">Java Edition</h3>
+              </div>
 
-            {/* Modal Content */}
-            <motion.div
-              className="relative w-full max-w-lg bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-3xl shadow-2xl overflow-hidden"
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: "spring", duration: 0.5 }}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:rotate-90 z-10"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-400">Version:</span>
+                  <span className="text-white font-medium">1.21.4</span>
+                </div>
 
-              {/* Modal Header */}
-              <div className="bg-gradient-to-r from-minecraft/20 to-emerald-600/20 border-b border-gray-700/50 px-6 py-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-minecraft/20 rounded-xl border border-minecraft/30">
-                    <Sword className="w-6 h-6 text-minecraft" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-white">Server Connection</h2>
-                    <p className="text-sm text-gray-400 mt-1">Choose your edition to connect</p>
+                <div className="space-y-2">
+                  <label className="text-xs text-gray-400 uppercase tracking-wide">Server IP</label>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 border border-white/10 rounded-lg px-4 py-3 bg-white/5">
+                      <code className="text-minecraft font-mono text-sm sm:text-base">play.doeng.world</code>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy('play.doeng.world', 'java')}
+                      className="flex items-center gap-2 px-4 py-3 border border-white/10 rounded-lg hover:bg-white/5 text-white transition-all duration-200"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {copiedText === 'java' ? (
+                        <>
+                          <Check className="w-4 h-4 text-minecraft" />
+                          <span className="hidden sm:inline text-sm">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          <span className="hidden sm:inline text-sm">Copy</span>
+                        </>
+                      )}
+                    </motion.button>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Modal Body */}
-              <div className="p-6 space-y-6">
-                {/* Java Edition Section */}
-                <div className="space-y-3">
+            {/* Divider */}
+            <div className="border-t border-white/5"></div>
+
+            {/* Bedrock Edition Section */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                <h3 className="text-lg font-semibold text-white">Bedrock Edition</h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-400">Version:</span>
+                  <span className="text-white font-medium">1.21.70</span>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs text-gray-400 uppercase tracking-wide">Server IP</label>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-minecraft rounded-full animate-pulse"></div>
-                    <h3 className="text-lg font-bold text-white">Java Edition</h3>
-                  </div>
-                  
-                  <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">Version:</span>
-                      <span className="text-white font-semibold">1.21.4</span>
+                    <div className="flex-1 border border-white/10 rounded-lg px-4 py-3 bg-white/5">
+                      <code className="text-blue-400 font-mono text-sm sm:text-base">be.doeng.world</code>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <label className="text-xs text-gray-400 uppercase tracking-wide">Server IP</label>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-3">
-                          <code className="text-minecraft font-mono text-sm sm:text-base">play.doeng.world</code>
-                        </div>
-                        <motion.button
-                          onClick={() => handleCopy('play.doeng.world', 'java')}
-                          className="flex items-center gap-2 px-4 py-3 bg-minecraft/20 hover:bg-minecraft/30 border border-minecraft/30 rounded-lg text-white transition-all duration-300 hover:scale-105"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {copiedText === 'java' ? (
-                            <>
-                              <Check className="w-4 h-4 text-minecraft" />
-                              <span className="hidden sm:inline text-sm">Copied!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-4 h-4" />
-                              <span className="hidden sm:inline text-sm">Copy</span>
-                            </>
-                          )}
-                        </motion.button>
-                      </div>
-                    </div>
+                    <motion.button
+                      onClick={() => handleCopy('be.doeng.world', 'bedrock-ip')}
+                      className="flex items-center gap-2 px-4 py-3 border border-white/10 rounded-lg hover:bg-white/5 text-white transition-all duration-200"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {copiedText === 'bedrock-ip' ? (
+                        <>
+                          <Check className="w-4 h-4 text-blue-400" />
+                          <span className="hidden sm:inline text-sm">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          <span className="hidden sm:inline text-sm">Copy</span>
+                        </>
+                      )}
+                    </motion.button>
                   </div>
                 </div>
 
-                {/* Divider */}
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-700/50"></div>
-                  </div>
-                  <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-gray-900 px-3 text-gray-500">or</span>
-                  </div>
-                </div>
-
-                {/* Bedrock Edition Section */}
-                <div className="space-y-3">
+                <div className="space-y-2">
+                  <label className="text-xs text-gray-400 uppercase tracking-wide">Port</label>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                    <h3 className="text-lg font-bold text-white">Bedrock Edition</h3>
+                    <div className="flex-1 border border-white/10 rounded-lg px-4 py-3 bg-white/5">
+                      <code className="text-blue-400 font-mono text-sm sm:text-base">25565</code>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy('25565', 'bedrock-port')}
+                      className="flex items-center gap-2 px-4 py-3 border border-white/10 rounded-lg hover:bg-white/5 text-white transition-all duration-200"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {copiedText === 'bedrock-port' ? (
+                        <>
+                          <Check className="w-4 h-4 text-blue-400" />
+                          <span className="hidden sm:inline text-sm">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-4 h-4" />
+                          <span className="hidden sm:inline text-sm">Copy</span>
+                        </>
+                      )}
+                    </motion.button>
                   </div>
-                  
-                  <div className="bg-black/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">Version:</span>
-                      <span className="text-white font-semibold">1.21.70</span>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label className="text-xs text-gray-400 uppercase tracking-wide">Server IP</label>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-3">
-                          <code className="text-blue-400 font-mono text-sm sm:text-base">be.doeng.world</code>
-                        </div>
-                        <motion.button
-                          onClick={() => handleCopy('be.doeng.world', 'bedrock-ip')}
-                          className="flex items-center gap-2 px-4 py-3 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 rounded-lg text-white transition-all duration-300 hover:scale-105"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {copiedText === 'bedrock-ip' ? (
-                            <>
-                              <Check className="w-4 h-4 text-blue-400" />
-                              <span className="hidden sm:inline text-sm">Copied!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-4 h-4" />
-                              <span className="hidden sm:inline text-sm">Copy</span>
-                            </>
-                          )}
-                        </motion.button>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs text-gray-400 uppercase tracking-wide">Port</label>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-950/50 border border-gray-700/50 rounded-lg px-4 py-3">
-                          <code className="text-blue-400 font-mono text-sm sm:text-base">25565</code>
-                        </div>
-                        <motion.button
-                          onClick={() => handleCopy('25565', 'bedrock-port')}
-                          className="flex items-center gap-2 px-4 py-3 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 rounded-lg text-white transition-all duration-300 hover:scale-105"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {copiedText === 'bedrock-port' ? (
-                            <>
-                              <Check className="w-4 h-4 text-blue-400" />
-                              <span className="hidden sm:inline text-sm">Copied!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-4 h-4" />
-                              <span className="hidden sm:inline text-sm">Copy</span>
-                            </>
-                          )}
-                        </motion.button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Info Note */}
-                <div className="bg-gold/10 border border-gold/30 rounded-xl p-4">
-                  <p className="text-xs sm:text-sm text-gray-300 text-center">
-                    🎮 <span className="font-semibold text-gold">Pro Tip:</span> Copy the server IP and paste it into your Minecraft multiplayer menu!
-                  </p>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
+            </div>
+
+            {/* Info Note */}
+            <div className="border-l-2 border-gold pl-4">
+              <p className="text-sm text-gray-400">
+                <span className="text-gold font-medium">Pro Tip:</span> Copy the server IP and paste it into your Minecraft multiplayer menu!
+              </p>
+            </div>
+          </div>
+        </FeatureModal>
       </AnimatePresence>
     </div>
   );
