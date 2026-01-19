@@ -26,6 +26,7 @@ import {
   MapPin
 } from 'lucide-react';
 import { FeatureModal } from './components/FeatureModal';
+import backgroundImage from '../asset/background.png';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,7 +75,7 @@ function App() {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url('/bg-doeng-world.jpg')`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -209,7 +210,9 @@ function App() {
               </motion.a>
 
               <motion.a
-                href="#store"
+                href="https://saweria.co/unkronnn"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:scale-110 hover:bg-gold hover:border-gold hover:shadow-[0_0_20px_rgba(255,215,0,0.5)] hover:text-gray-900"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
